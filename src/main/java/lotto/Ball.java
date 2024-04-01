@@ -1,6 +1,8 @@
 package lotto;
 
-public class Ball {
+import java.util.Comparator;
+
+public class Ball implements Comparable<Ball> {
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 45;
     private int number;
@@ -18,5 +20,20 @@ public class Ball {
 
     public int getNumber() {
         return number;
+    }
+
+    @Override
+    public int compareTo(Ball ball) {
+        int ballNumber = ball.getNumber();
+
+        if (this.number > ballNumber) {
+            return 1;
+        }
+
+        if (this.number < ballNumber) {
+            return -1;
+        }
+
+        return 0;
     }
 }

@@ -1,5 +1,6 @@
 package lotto;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Lotto {
@@ -8,7 +9,12 @@ public class Lotto {
 
     public Lotto(List<Ball> balls) {
         validateBalls(balls);
+        sortBalls(balls);
         this.balls = balls;
+    }
+
+    private void sortBalls(List<Ball> balls) {
+        Collections.sort(balls);
     }
 
     private void validateBalls(List<Ball> balls) {
