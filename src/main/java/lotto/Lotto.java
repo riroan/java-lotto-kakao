@@ -1,6 +1,5 @@
 package lotto;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -32,5 +31,13 @@ public class Lotto {
         if (numbers.size() != LOTTO_SIZE) {
             throw new RuntimeException();
         }
+    }
+
+    public boolean contain(Ball target) {
+        boolean isContained = this.balls
+                .stream()
+                .anyMatch(ball -> ball.getNumber() == target.getNumber());
+
+        return isContained;
     }
 }
