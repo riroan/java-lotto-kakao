@@ -1,8 +1,6 @@
 package lotto;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
@@ -25,10 +23,11 @@ public class Lotto {
     }
 
     private void validateDuplicatedBalls(List<Ball> balls) {
-        Set<Integer> numbers = balls.stream()
+        long count = balls.stream()
                 .map(Ball::getNumber)
-                .collect(Collectors.toSet());
-        if (numbers.size() != LOTTO_SIZE) {
+                .distinct()
+                .count();
+        if (count != LOTTO_SIZE) {
             throw new RuntimeException();
         }
     }
