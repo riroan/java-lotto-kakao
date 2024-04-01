@@ -13,9 +13,9 @@
 - [ ] 1000으로 나누었을 때 몫만큼 구매한다.
 - [ ] LottoSystem이 구매 개수 파악
 - [ ] LottoSystem이 랜덤 로또 용지 생성
-- [ ] LottoSystem이 로또 별 당첨 여부 확인 !
+- [ ] 정답 클래스는 로또 별 당첨 여부 확인
 - [ ] Lottos클래스는 Lotto의 리스트를 가진다.
-- [ ] Lotto의 숫자는 중복되지 않아야한다.
+- [X] Lotto의 숫자는 중복되지 않아야한다.
 - [X] Ball은 1~45에 포함되는지 확인한다.
 - [ ] 랜덤을 위한 인터페이스를 개발한다.
 - [ ] 사용자가 당첨 번호 입력
@@ -23,9 +23,25 @@
 - [ ] View가 일치 개수 출력
 - [ ] LottoSystem이 총 수익률 계산
 - [ ] View가 총 수익률 출력
+- [ ] 결과 클래스 생성
+- [ ] 정답 클래스 생성
+
+## 메모장
 
 lotto.compare(correct)
 lottosystem.compare(lotto, correct)
+
+### Lotto를 사용할 때
+
+재사용 향상
+
+null접근 위험
+
+### 새 클래스를 만들 때
+
+compare함수를 여기에 넣는다.
+
+---
 
 Ball <- Lotto <- Lottos <- LottoSystem
 
@@ -34,3 +50,5 @@ Ball <- Lotto <- Lottos <- LottoSystem
                                 V
 
                             RandomGenerator
+
+List<Ball> numbers, Ball bonus
