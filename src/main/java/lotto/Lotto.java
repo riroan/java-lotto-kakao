@@ -39,4 +39,8 @@ public class Lotto {
 
         return isContained;
     }
+
+    public List<Ball> getBalls() {
+        return this.balls;
+    }
 }

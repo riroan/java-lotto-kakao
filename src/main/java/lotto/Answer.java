@@ -16,4 +16,12 @@ public class Answer {
             throw new RuntimeException();
         }
     }
+
+    public Lotto getAnswerNumbers() {
+        return this.answerNumbers;
+    }
+
+    public Ball getBonusNumber() {
+        return this.bonusNumber;
+    }
 }
