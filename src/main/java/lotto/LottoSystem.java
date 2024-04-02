@@ -4,6 +4,9 @@ import lotto.domain.*;
 import lotto.generator.NumberGenerator;
 import lotto.generator.RandomNumberGenerator;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class LottoSystem {
     private static final Money LOTTO_PRICE = new Money(1000);
     private NumberGenerator numberGenerator;
@@ -23,6 +26,17 @@ public class LottoSystem {
     public Lottos buyLottos(Money money) {
         lottoCount = calculateLottoCount(money);
         return generateLottos();
+    }
+
+    public Answer convertToAnswer(List<Integer> answerAndBonusNumber) {
+        List<Ball> answerBalls = answerAndBonusNumber.subList(0, 6)
+                .stream()
+                .map(Ball::new)
+                .collect(Collectors.toList());
+        Ball bonusBall = new Ball(answerAndBonusNumber.get(6));
+
+        Lotto lotto = new Lotto(answerBalls);
+        return new Answer(lotto, bonusBall);
     }
 
     private Lottos generateLottos() {

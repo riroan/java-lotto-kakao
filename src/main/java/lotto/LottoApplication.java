@@ -16,20 +16,10 @@ public class LottoApplication {
         lottoView.printLottos(lottos);
 
         List<Integer> answerAndBonusNumber = lottoView.inputAnswer();
-
-        List<Ball> answerBalls = answerAndBonusNumber.subList(0, 6)
-                .stream()
-                .map(Ball::new)
-                .collect(Collectors.toList());
-        Ball bonusBall = new Ball(answerAndBonusNumber.get(6));
-
-        Lotto lotto = new Lotto(answerBalls);
-        Answer answer = new Answer(lotto, bonusBall);
-
+        Answer answer = lottoSystem.convertToAnswer(answerAndBonusNumber);
         lottoSystem.scoreLottos(lottos, answer);
 
         Result result = lottoSystem.getResult();
-
         lottoView.printResult(result);
 
         Profit profit = lottoSystem.calculateProfit();
