@@ -3,6 +3,7 @@ package lotto.generator;
 import lotto.Answer;
 import lotto.Ball;
 import lotto.Lotto;
+import lotto.Lottos;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,6 +25,15 @@ public class RandomNumberGenerator implements NumberGenerator {
     private List<Integer> generateNumbers(int length) {
         Collections.shuffle(numberPool);
         return numberPool.subList(0, length);
+    }
+
+    public Lottos generateLottos(int lottoCount) {
+        List<Lotto> lottos = new ArrayList<>();
+        for (int i = 0; i < lottoCount ; i++) {
+            lottos.add(generateLotto());
+        }
+
+        return new Lottos(lottos);
     }
 
     public Lotto generateLotto() {

@@ -3,26 +3,25 @@ package lotto;
 import lotto.generator.NumberGenerator;
 import lotto.generator.RandomNumberGenerator;
 
-import java.util.*;
-import java.util.ArrayList;
-import java.util.stream.IntStream;
-
 public class LottoSystem {
-    private int lottoCount;
+    private static final int LOTTO_PRICE = 1000;
     private NumberGenerator numberGenerator;
 
-    public LottoSystem(int lottoCount) {
-        this.lottoCount = lottoCount;
+    public LottoSystem() {
         this.numberGenerator = new RandomNumberGenerator();
     }
 
-    public Lottos generateLottos() {
-        List<Lotto> lottos = new ArrayList<>();
-        for (int i = 0; i < lottoCount ; i++) {
-            lottos.add(generateLotto());
-        }
+    private int calculateLottoCount(int money) {
+        return money / LOTTO_PRICE;
+    }
 
-        return new Lottos(lottos);
+    public Lottos buyLottos(int money) {
+        int lottoCount = calculateLottoCount(money);
+        return generateLottos(lottoCount);
+    }
+
+    public Lottos generateLottos(int lottoCount) {
+        return numberGenerator.generateLottos(lottoCount);
     }
 
     public Lotto generateLotto() {
