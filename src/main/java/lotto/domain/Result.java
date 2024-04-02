@@ -60,33 +60,9 @@ public class Result {
         this.reward = 0L;
 
         for (Map.Entry<Ranking, Integer> entry: this.score.entrySet()) {
-            this.reward += matchReward(entry.getKey()) * entry.getValue();
+            this.reward += Ranking.getReward(entry.getKey()) * entry.getValue();
         }
 
         return this.reward;
-    }
-
-    public long matchReward(Ranking ranking) {
-        if (ranking == Ranking.FIRST) {
-            return 2000000000;
-        }
-
-        if (ranking == Ranking.SECOND) {
-            return 30000000;
-        }
-
-        if (ranking == Ranking.THIRD) {
-            return 1500000;
-        }
-
-        if (ranking == Ranking.FOURTH) {
-            return 50000;
-        }
-
-        if (ranking == Ranking.FIFTH) {
-            return 5000;
-        }
-
-        return 0;
     }
 }

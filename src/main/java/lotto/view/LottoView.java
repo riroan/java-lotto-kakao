@@ -54,7 +54,7 @@ public class LottoView {
                 .collect(Collectors.toList());
         for (Ranking rank : winRanks) {
             String desc = getIndividualRankingDesc(rank);
-            long price = result.matchReward(rank);
+            long price = Ranking.getReward(rank);
             int count = result.getScore(rank);
 
             System.out.println(desc + String.format("(%d원)- %d개", price, count));
