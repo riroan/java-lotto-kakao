@@ -65,7 +65,7 @@ public class Result {
         return this.reward;
     }
 
-    private long matchReward(Ranking ranking) {
+    public long matchReward(Ranking ranking) {
         if (ranking == Ranking.FIRST) {
             return 2000000000;
         }

@@ -7,7 +7,7 @@ public class LottoSystem {
     private static final int LOTTO_PRICE = 1000;
     private NumberGenerator numberGenerator;
     private Result result;
-    private int lottoCount;
+    private long lottoCount;
 
     public LottoSystem() {
         this.numberGenerator = new RandomNumberGenerator();
@@ -15,11 +15,11 @@ public class LottoSystem {
         this.lottoCount = 0;
     }
 
-    private int calculateLottoCount(int money) {
+    private long calculateLottoCount(long money) {
         return money / LOTTO_PRICE;
     }
 
-    public Lottos buyLottos(int money) {
+    public Lottos buyLottos(long money) {
         lottoCount = calculateLottoCount(money);
         return generateLottos();
     }
@@ -28,13 +28,23 @@ public class LottoSystem {
         return numberGenerator.generateLottos(lottoCount);
     }
 
+    public void scoreLottos(Lottos lottos, Answer answer) {
+        for (int i = 0; i < lottoCount; i++) {
+            scoreLotto(lottos.get(i), answer);
+        }
+    }
+
+    public Result getResult() {
+        return result;
+    }
+
     public void scoreLotto(Lotto lotto, Answer answer) {
         result.scoreLotto(lotto, answer);
     }
 
     public Profit calculateProfit() {
         long reward = result.calculateReward();
-        int seed = lottoCount * LOTTO_PRICE;
+        long seed = lottoCount * LOTTO_PRICE;
 
         return new Profit(reward, seed);
     }

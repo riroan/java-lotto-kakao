@@ -9,5 +9,5 @@ import java.util.*;
 public interface NumberGenerator {
     Lotto generateLotto();
     Answer generateAnswer();
-    Lottos generateLottos(int lottoCount);
+    Lottos generateLottos(long lottoCount);
 }

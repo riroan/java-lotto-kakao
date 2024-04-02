@@ -2,6 +2,7 @@ package lotto;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
@@ -48,5 +49,13 @@ public class Lotto {
 
     public List<Ball> getBalls() {
         return this.balls;
+    }
+
+    @Override
+    public String toString() {
+        List<String> numbers = balls.stream()
+                .map(ball -> Integer.toString(ball.getNumber()))
+                .collect(Collectors.toList());
+        return "[" + String.join(", ", numbers) + "]";
     }
 }

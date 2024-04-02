@@ -12,4 +12,8 @@ public class Lottos {
     public int getSize() {
         return this.lottos.size();
     }
+
+    public Lotto get(int ix) {
+        return lottos.get(ix);
+    }
 }

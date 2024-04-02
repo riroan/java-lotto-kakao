@@ -27,7 +27,7 @@ public class RandomNumberGenerator implements NumberGenerator {
         return numberPool.subList(0, length);
     }
 
-    public Lottos generateLottos(int lottoCount) {
+    public Lottos generateLottos(long lottoCount) {
         List<Lotto> lottos = new ArrayList<>();
         for (int i = 0; i < lottoCount ; i++) {
             lottos.add(generateLotto());
