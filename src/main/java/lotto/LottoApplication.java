@@ -11,7 +11,7 @@ public class LottoApplication {
         LottoSystem lottoSystem = new LottoSystem();
         LottoView lottoView = new LottoView();
 
-        long money = lottoView.inputMoney();
+        Money money = new Money(lottoView.inputMoney());
         Lottos lottos = lottoSystem.buyLottos(money);
         lottoView.printLottos(lottos);
 
