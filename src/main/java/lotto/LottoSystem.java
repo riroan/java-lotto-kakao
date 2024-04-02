@@ -6,9 +6,13 @@ import lotto.generator.RandomNumberGenerator;
 public class LottoSystem {
     private static final int LOTTO_PRICE = 1000;
     private NumberGenerator numberGenerator;
+    private Result result;
+    private int lottoCount;
 
     public LottoSystem() {
         this.numberGenerator = new RandomNumberGenerator();
+        this.result = new Result();
+        this.lottoCount = 0;
     }
 
     private int calculateLottoCount(int money) {
@@ -16,15 +20,22 @@ public class LottoSystem {
     }
 
     public Lottos buyLottos(int money) {
-        int lottoCount = calculateLottoCount(money);
-        return generateLottos(lottoCount);
+        lottoCount = calculateLottoCount(money);
+        return generateLottos();
     }
 
-    public Lottos generateLottos(int lottoCount) {
+    private Lottos generateLottos() {
         return numberGenerator.generateLottos(lottoCount);
     }
 
-    public Lotto generateLotto() {
-        return numberGenerator.generateLotto();
+    public void scoreLotto(Lotto lotto, Answer answer) {
+        result.scoreLotto(lotto, answer);
+    }
+
+    public Profit calculateProfit() {
+        long reward = result.calculateReward();
+        int seed = lottoCount * LOTTO_PRICE;
+
+        return new Profit(reward, seed);
     }
 }
