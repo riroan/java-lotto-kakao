@@ -42,9 +42,7 @@ public class Lotto {
     }
 
     public boolean contain(Ball target) {
-        return this.balls
-                .stream()
-                .anyMatch(ball -> ball.getNumber() == target.getNumber());
+        return balls.contains(target);
     }
 
     public List<Ball> getBalls() {

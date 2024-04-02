@@ -34,4 +34,12 @@ public class Ball implements Comparable<Ball> {
 
         return 0;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Ball) {
+            return number == ((Ball) obj).getNumber();
+        }
+        return false;
+    }
 }
