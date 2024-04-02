@@ -124,4 +124,31 @@ public class ResultTest {
         result.scoreLotto(lotto, answer);
         assertThat(result.getScore(Ranking.FIFTH)).isEqualTo(1);
     }
+
+    @Test
+    void 당첨금_계산_테스트() {
+        Result result = new Result();
+        Lotto lotto1 = new Lotto(Arrays.asList(
+                new Ball(1),
+                new Ball(2),
+                new Ball(3),
+                new Ball(4),
+                new Ball(5),
+                new Ball(6)
+        ));
+        Lotto lotto2 = new Lotto(Arrays.asList(
+                new Ball(1),
+                new Ball(2),
+                new Ball(3),
+                new Ball(4),
+                new Ball(5),
+                new Ball(7)
+        ));
+
+        result.scoreLotto(lotto1, answer);
+        result.scoreLotto(lotto2, answer);
+
+        long reward = result.calculateReward();
+        assertThat(reward).isEqualTo(2000000000+30000000);
+    }
 }

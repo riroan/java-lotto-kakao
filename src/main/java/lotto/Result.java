@@ -1,13 +1,16 @@
 package lotto;
 
+import javax.swing.text.html.parser.Entity;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Result {
     private final Map<Ranking, Integer> score;
+    private long reward;
 
     public Result() {
         score = new HashMap<>();
+        reward = 0L;
     }
 
     public void scoreLotto(Lotto lotto, Answer answer) {
@@ -50,5 +53,39 @@ public class Result {
         }
 
         return Ranking.FAIL;
+    }
+
+    public long calculateReward() {
+        this.reward = 0L;
+
+        for (Map.Entry<Ranking, Integer> entry: this.score.entrySet()) {
+            this.reward += matchReward(entry.getKey()) * entry.getValue();
+        }
+
+        return this.reward;
+    }
+
+    private long matchReward(Ranking ranking) {
+        if (ranking == Ranking.FIRST) {
+            return 2000000000;
+        }
+
+        if (ranking == Ranking.SECOND) {
+            return 30000000;
+        }
+
+        if (ranking == Ranking.THIRD) {
+            return 1500000;
+        }
+
+        if (ranking == Ranking.FOURTH) {
+            return 50000;
+        }
+
+        if (ranking == Ranking.FIFTH) {
+            return 5000;
+        }
+
+        return 0;
     }
 }
