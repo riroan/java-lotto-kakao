@@ -1,9 +1,9 @@
 package lotto.generator;
 
-import lotto.Answer;
-import lotto.Ball;
-import lotto.Lotto;
-import lotto.Lottos;
+import lotto.domain.Answer;
+import lotto.domain.Ball;
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
 
 import java.util.ArrayList;
 import java.util.Collections;

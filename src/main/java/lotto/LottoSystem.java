@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.*;
 import lotto.generator.NumberGenerator;
 import lotto.generator.RandomNumberGenerator;
 

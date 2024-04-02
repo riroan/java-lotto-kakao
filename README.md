@@ -36,6 +36,11 @@
 - [X] 정답 클래스 생성
 - [X] 정답 클래스는 보너스 번호가 로또 번호와 겹치면 안된다.
 
+## 리팩터링 리스트
+- [ ] Money 클래스 래핑
+- [ ] 순위 별 당첨금액 위치 변경
+- [X] 패키지화
+
 ## 메모장
 
 
@@ -62,4 +67,3 @@ Ball <- Lotto <- Lottos <- LottoSystem
 List<Ball> numbers, Ball bonus
 
 Result
-

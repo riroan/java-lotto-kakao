@@ -1,6 +1,7 @@
-package lotto;
+package lotto.domain;
 
-import javax.swing.text.html.parser.Entity;
+import lotto.enums.Ranking;
+
 import java.util.HashMap;
 import java.util.Map;
 

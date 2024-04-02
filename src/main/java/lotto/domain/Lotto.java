@@ -1,4 +1,6 @@
-package lotto;
+package lotto.domain;
+
+import lotto.domain.Ball;
 
 import java.util.Collections;
 import java.util.List;

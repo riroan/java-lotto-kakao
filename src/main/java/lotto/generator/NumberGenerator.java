@@ -1,10 +1,8 @@
 package lotto.generator;
 
-import lotto.Answer;
-import lotto.Lotto;
-import lotto.Lottos;
-
-import java.util.*;
+import lotto.domain.Answer;
+import lotto.domain.Lotto;
+import lotto.domain.Lottos;
 
 public interface NumberGenerator {
     Lotto generateLotto();

@@ -1,8 +1,8 @@
 package lotto.generator;
 
-import lotto.Answer;
-import lotto.Ball;
-import lotto.Lotto;
+import lotto.domain.Answer;
+import lotto.domain.Ball;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,8 @@
-package lotto;
+package lotto.domain;
 
+import lotto.domain.Answer;
+import lotto.domain.Ball;
+import lotto.domain.Lotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

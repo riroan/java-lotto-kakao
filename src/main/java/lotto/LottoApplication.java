@@ -1,5 +1,6 @@
 package lotto;
 
+import lotto.domain.*;
 import lotto.view.LottoView;
 
 import java.util.List;

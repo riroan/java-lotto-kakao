@@ -1,6 +1,4 @@
-package lotto;
-
-import java.util.Comparator;
+package lotto.domain;
 
 public class Ball implements Comparable<Ball> {
     private static final int MIN_NUMBER = 1;

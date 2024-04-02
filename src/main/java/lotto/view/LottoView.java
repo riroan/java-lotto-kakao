@@ -1,9 +1,9 @@
 package lotto.view;
 
-import lotto.Lottos;
-import lotto.Profit;
-import lotto.Ranking;
-import lotto.Result;
+import lotto.domain.Lottos;
+import lotto.domain.Profit;
+import lotto.enums.Ranking;
+import lotto.domain.Result;
 
 import java.util.Arrays;
 import java.util.List;
