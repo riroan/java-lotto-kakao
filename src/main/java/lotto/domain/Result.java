@@ -4,6 +4,7 @@ import lotto.enums.Ranking;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Result {
     private final Map<Ranking, Integer> score;
@@ -57,12 +58,14 @@ public class Result {
     }
 
     public long calculateReward() {
-        this.reward = 0L;
+        reward = 0L;
 
-        for (Map.Entry<Ranking, Integer> entry: this.score.entrySet()) {
-            this.reward += Ranking.getReward(entry.getKey()) * entry.getValue();
+        for (Entry<Ranking, Integer> entry: score.entrySet()) {
+            Ranking rank = entry.getKey();
+            int count = entry.getValue();
+            reward += rank.getReward() * count;
         }
 
-        return this.reward;
+        return reward;
     }
 }
