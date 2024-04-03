@@ -1,8 +1,8 @@
 package lotto.domain;
 
 public class Answer {
-    private Lotto answerNumbers;
-    private Ball bonusNumber;
+    private final Lotto answerNumbers;
+    private final Ball bonusNumber;
 
     public Answer(Lotto answerNumbers, Ball bonusNumber) {
         validateBonusNumberNotInAnswerNumbers(answerNumbers, bonusNumber);

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
-    private List<Ball> balls;
+    private final List<Ball> balls;
 
     public Lotto(List<Ball> balls) {
         validateBalls(balls);
