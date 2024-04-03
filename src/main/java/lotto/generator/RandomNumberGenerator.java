@@ -1,6 +1,6 @@
 package lotto.generator;
 
-import lotto.domain.Answer;
+import lotto.domain.WinningNumber;
 import lotto.domain.Ball;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
@@ -42,12 +42,12 @@ public class RandomNumberGenerator implements NumberGenerator {
         return convertNumbersToLotto(numbers);
     }
 
-    public Answer generateAnswer() {
+    public WinningNumber generateAnswer() {
         List<Integer> numbers = generateNumbers(LENGTH + 1);
         Lotto lotto = convertNumbersToLotto(numbers.subList(0, LENGTH));
         Ball bonusBall = new Ball(numbers.get(LENGTH));
 
-        return new Answer(lotto, bonusBall);
+        return new WinningNumber(lotto, bonusBall);
     }
 
     private Lotto convertNumbersToLotto(List<Integer> numbers) {

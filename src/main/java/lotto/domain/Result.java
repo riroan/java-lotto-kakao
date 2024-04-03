@@ -15,9 +15,9 @@ public class Result {
         reward = 0L;
     }
 
-    public void scoreLotto(Lotto lotto, Answer answer) {
-        long answerCount = answer.getAnswerNumbers().getBalls().stream().filter(lotto::contain).count();
-        boolean isCorrectBonusBall = lotto.contain(answer.getBonusNumber());
+    public void scoreLotto(Lotto lotto, WinningNumber winningNumber) {
+        long answerCount = winningNumber.getWinningNumbers().getBalls().stream().filter(lotto::contain).count();
+        boolean isCorrectBonusBall = lotto.contain(winningNumber.getBonusNumber());
 
         Ranking rank = getRank(answerCount, isCorrectBonusBall);
         addScore(rank);

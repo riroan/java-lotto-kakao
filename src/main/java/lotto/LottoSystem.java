@@ -28,7 +28,7 @@ public class LottoSystem {
         return generateLottos();
     }
 
-    public Answer convertToAnswer(List<Integer> answerAndBonusNumber) {
+    public WinningNumber convertToAnswer(List<Integer> answerAndBonusNumber) {
         List<Ball> answerBalls = answerAndBonusNumber.subList(0, 6)
                 .stream()
                 .map(Ball::new)
@@ -36,16 +36,16 @@ public class LottoSystem {
         Ball bonusBall = new Ball(answerAndBonusNumber.get(6));
 
         Lotto lotto = new Lotto(answerBalls);
-        return new Answer(lotto, bonusBall);
+        return new WinningNumber(lotto, bonusBall);
     }
 
     private Lottos generateLottos() {
         return numberGenerator.generateLottos(lottoCount);
     }
 
-    public void scoreLottos(Lottos lottos, Answer answer) {
+    public void scoreLottos(Lottos lottos, WinningNumber winningNumber) {
         for (int i = 0; i < lottoCount; i++) {
-            scoreLotto(lottos.get(i), answer);
+            scoreLotto(lottos.get(i), winningNumber);
         }
     }
 
@@ -53,8 +53,8 @@ public class LottoSystem {
         return result;
     }
 
-    public void scoreLotto(Lotto lotto, Answer answer) {
-        result.scoreLotto(lotto, answer);
+    public void scoreLotto(Lotto lotto, WinningNumber winningNumber) {
+        result.scoreLotto(lotto, winningNumber);
     }
 
     public Profit calculateProfit() {

@@ -1,11 +1,11 @@
 package lotto.generator;
 
-import lotto.domain.Answer;
+import lotto.domain.WinningNumber;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 
 public interface NumberGenerator {
     Lotto generateLotto();
-    Answer generateAnswer();
+    WinningNumber generateAnswer();
     Lottos generateLottos(long lottoCount);
 }

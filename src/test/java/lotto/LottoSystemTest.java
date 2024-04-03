@@ -46,7 +46,7 @@ public class LottoSystemTest {
                 new Ball(5),
                 new Ball(7)
         ));
-        Answer answer = new Answer(
+        WinningNumber winningNumber = new WinningNumber(
                 new Lotto(Arrays.asList(
                         new Ball(1),
                         new Ball(2),
@@ -56,8 +56,8 @@ public class LottoSystemTest {
                         new Ball(6)
                 )), new Ball(7));
 
-        lottoSystem.scoreLotto(lotto1, answer);
-        lottoSystem.scoreLotto(lotto2, answer);
+        lottoSystem.scoreLotto(lotto1, winningNumber);
+        lottoSystem.scoreLotto(lotto2, winningNumber);
 
         Profit profit = lottoSystem.calculateProfit();
 

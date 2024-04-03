@@ -1,8 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.Answer;
-import lotto.domain.Ball;
-import lotto.domain.Lotto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,17 +24,17 @@ public class AnswerTest {
 
     @Test
     void 정답_생성자_테스트() {
-        Answer answer = new Answer(
+        WinningNumber winningNumber = new WinningNumber(
                 lotto,
                 new Ball(7)
         );
-        assertThat(answer).isNotNull();
+        assertThat(winningNumber).isNotNull();
     }
 
     @Test
     void 정답과_중복된_보너스_볼_테스트() {
         assertThatThrownBy(() -> {
-            new Answer(
+            new WinningNumber(
                     lotto,
                     new Ball(6)
             );

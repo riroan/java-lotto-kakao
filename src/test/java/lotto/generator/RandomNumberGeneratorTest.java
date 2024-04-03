@@ -1,6 +1,6 @@
 package lotto.generator;
 
-import lotto.domain.Answer;
+import lotto.domain.WinningNumber;
 import lotto.domain.Ball;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.Assertions;
@@ -44,9 +44,9 @@ public class RandomNumberGeneratorTest {
     @Test
     void 랜덤_정답_생성_테스트() {
         RandomNumberGenerator randomNumberGenerator = new RandomNumberGenerator();
-        Answer answer = randomNumberGenerator.generateAnswer();
-        Lotto lotto = answer.getAnswerNumbers();
-        Ball bonusBall = answer.getBonusNumber();
+        WinningNumber winningNumber = randomNumberGenerator.generateAnswer();
+        Lotto lotto = winningNumber.getWinningNumbers();
+        Ball bonusBall = winningNumber.getBonusNumber();
         int bonusNumber = bonusBall.getNumber();
 
         List<Ball> balls = lotto.getBalls();
