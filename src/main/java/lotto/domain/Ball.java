@@ -22,17 +22,7 @@ public class Ball implements Comparable<Ball> {
 
     @Override
     public int compareTo(Ball ball) {
-        int ballNumber = ball.getNumber();
-
-        if (this.number > ballNumber) {
-            return 1;
-        }
-
-        if (this.number < ballNumber) {
-            return -1;
-        }
-
-        return 0;
+        return Integer.compare(number, ball.number);
     }
 
     @Override
