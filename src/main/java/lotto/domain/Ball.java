@@ -14,7 +14,7 @@ public class Ball implements Comparable<Ball> {
 
     private void validateNumber(int number) {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
-            throw new RuntimeException();
+            throw new IllegalArgumentException("숫자의 범위는 1~45여야합니다!");
         }
     }
 

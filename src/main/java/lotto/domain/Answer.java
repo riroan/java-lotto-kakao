@@ -13,7 +13,7 @@ public class Answer {
     private void validateBonusNumberNotInAnswerNumbers(Lotto answerNumbers, Ball bonusNumber){
         boolean isContain = answerNumbers.contain(bonusNumber);
         if (isContain) {
-            throw new RuntimeException();
+            throw new IllegalStateException("중복된 숫자가 존재합니다!");
         }
     }
 
