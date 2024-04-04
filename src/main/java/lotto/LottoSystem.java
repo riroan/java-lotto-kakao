@@ -22,24 +22,32 @@ public class LottoSystem {
         return money.divide(LOTTO_PRICE);
     }
 
-    public Lottos buyLottos(Money money) {
-        lottoCount = calculateLottoCount(money);
-        return generateLottos();
+    public List<Lotto> buyAutoLotto(int numberOfManualLotto) {
+        return generateAutoLottos(lottoCount - numberOfManualLotto);
+    }
+
+    public void validateNumberOfManualLotto(int numberOfManualLotto) {
+        if (numberOfManualLotto > lottoCount || numberOfManualLotto < 0) {
+            throw new IllegalArgumentException("유효하지 않은 수동 구매 개수입니다!");
+        }
     }
 
     public WinningNumber convertToAnswer(List<Integer> answerAndBonusNumber) {
-        List<Ball> answerBalls = answerAndBonusNumber.subList(0, 6)
-                .stream()
-                .map(Ball::new)
-                .collect(Collectors.toList());
+        Lotto lotto = convertNumbersToLotto(answerAndBonusNumber.subList(0, 6));
         Ball bonusBall = new Ball(answerAndBonusNumber.get(6));
 
-        Lotto lotto = new Lotto(answerBalls);
         return new WinningNumber(lotto, bonusBall);
     }
 
-    private Lottos generateLottos() {
-        return numberGenerator.generateLottos(lottoCount);
+    public Lotto convertNumbersToLotto(List<Integer> numbers) {
+        List<Ball> balls = numbers.stream()
+                .map(Ball::new)
+                .collect(Collectors.toList());
+        return new Lotto(balls);
+    }
+
+    private List<Lotto> generateAutoLottos(long count) {
+        return numberGenerator.generateAutoLottos(count);
     }
 
     public void scoreLottos(Lottos lottos, WinningNumber winningNumber) {
@@ -55,5 +63,9 @@ public class LottoSystem {
         long seed = lottoCount * LOTTO_PRICE.getValue();
 
         return new Profit(reward, seed);
+    }
+
+    public void setLottoCount(Money money) {
+        lottoCount = calculateLottoCount(money);
     }
 }

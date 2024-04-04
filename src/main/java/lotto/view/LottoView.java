@@ -1,10 +1,12 @@
 package lotto.view;
 
+import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.Profit;
-import lotto.enums.Ranking;
 import lotto.domain.Result;
+import lotto.enums.Ranking;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -19,6 +21,12 @@ public class LottoView {
         return Long.parseLong(money);
     }
 
+    public int inputNumberOfManualLotto() {
+        System.out.println("수동으로 구매할 로또 수를 입력해 주세요.");
+        String count = scan.nextLine();
+        return Integer.parseInt(count);
+    }
+
     public void printLottos(Lottos lottos) {
         int size = lottos.getSize();
         System.out.printf("%d개를 구매했습니다.\n", size);
@@ -30,12 +38,16 @@ public class LottoView {
         System.out.println();
     }
 
+    private List<Integer> stringToNumbers(String numbers) {
+        return Arrays.stream(numbers.split(", "))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
     public List<Integer> inputAnswer() {
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         String answerLotto = scan.nextLine();
-        List<Integer> answerAndBonusBall = Arrays.stream(answerLotto.split(", "))
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
+        List<Integer> answerAndBonusBall = stringToNumbers(answerLotto);
 
         System.out.println("보너스 볼을 입력해 주세요.");
         String bonusBallNumber = scan.nextLine();
@@ -61,6 +73,15 @@ public class LottoView {
         }
     }
 
+    public void printManualLottosDescription() {
+        System.out.println("수동으로 구매할 번호를 입력해 주세요.");
+    }
+
+    public List<Integer> inputManualLottos() {
+
+        String lottoNumbers = scan.nextLine();
+        return stringToNumbers(lottoNumbers);
+    }
 
     private String getGainOrLoss(Profit profit) {
         long integerPart = profit.getIntegerPart();

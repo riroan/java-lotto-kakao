@@ -3,7 +3,7 @@ package lotto.domain;
 import java.util.Objects;
 
 public class Money {
-    private final long value;
+    private long value;
 
     public Money(long value) {
         this.value = value;
@@ -13,8 +13,12 @@ public class Money {
         return this.value;
     }
 
-    public long divide (Money money) {
+    public long divide(Money money) {
         return this.value / money.getValue();
+    }
+
+    public void subtract(Money money) {
+        this.value -= money.value;
     }
 
     @Override
