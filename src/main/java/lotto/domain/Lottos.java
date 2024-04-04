@@ -18,4 +18,14 @@ public class Lottos {
     public Lotto get(int ix) {
         return values.get(ix);
     }
+
+    public void scoreLottos(WinningNumber winningNumber, Result result) {
+        for (Lotto lotto: values) {
+            scoreLotto(lotto, winningNumber, result);
+        }
+    }
+
+    private void scoreLotto(Lotto lotto, WinningNumber winningNumber, Result result) {
+        result.scoreLotto(lotto, winningNumber);
+    }
 }

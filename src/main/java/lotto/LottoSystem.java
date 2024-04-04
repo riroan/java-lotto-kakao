@@ -43,17 +43,11 @@ public class LottoSystem {
     }
 
     public void scoreLottos(Lottos lottos, WinningNumber winningNumber) {
-        for (int i = 0; i < lottoCount; i++) {
-            scoreLotto(lottos.get(i), winningNumber);
-        }
+        lottos.scoreLottos(winningNumber, result);
     }
 
     public Result getResult() {
         return result;
-    }
-
-    public void scoreLotto(Lotto lotto, WinningNumber winningNumber) {
-        result.scoreLotto(lotto, winningNumber);
     }
 
     public Profit calculateProfit() {
