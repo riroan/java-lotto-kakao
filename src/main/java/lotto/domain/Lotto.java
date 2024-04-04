@@ -27,7 +27,7 @@ public class Lotto {
 
     private void validateNumberOfBalls(List<Ball> balls) {
         if (balls.size() != LOTTO_SIZE) {
-            throw new RuntimeException();
+            throw new IllegalStateException("로또 볼의 개수는 6개여야합니다!");
         }
     }
 
