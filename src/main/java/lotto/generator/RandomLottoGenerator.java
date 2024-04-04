@@ -41,12 +41,4 @@ public class RandomLottoGenerator {
         List<Ball> balls = generateNumbers(LENGTH);
         return new Lotto(balls);
     }
-
-    public WinningNumber generateWinningNumber() {
-        List<Ball> balls = generateNumbers(LENGTH + 1);
-        Lotto lotto = new Lotto(balls.subList(0, LENGTH));
-        Ball bonusBall = balls.get(LENGTH);
-
-        return new WinningNumber(lotto, bonusBall);
-    }
 }
