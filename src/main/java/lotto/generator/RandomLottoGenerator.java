@@ -3,7 +3,6 @@ package lotto.generator;
 import lotto.domain.Ball;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
-import lotto.domain.WinningNumber;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,9 +21,9 @@ public class RandomLottoGenerator {
                 .forEach(number -> ballPool.add(new Ball(number)));
     }
 
-    private List<Ball> generateNumbers(int length) {
+    private List<Ball> generateNumbers() {
         Collections.shuffle(ballPool);
-        return new ArrayList<>(ballPool.subList(0, length));
+        return new ArrayList<>(ballPool.subList(0, RandomLottoGenerator.LENGTH));
     }
 
     public Lottos generateLottos(long lottoCount) {
@@ -38,7 +37,7 @@ public class RandomLottoGenerator {
     }
 
     public Lotto generateLotto() {
-        List<Ball> balls = generateNumbers(LENGTH);
+        List<Ball> balls = generateNumbers();
         return new Lotto(balls);
     }
 }
