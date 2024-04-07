@@ -9,12 +9,10 @@ import java.util.stream.Collectors;
 public class LottoSystem {
     private static final Money LOTTO_PRICE = new Money(1000);
     private final RandomLottoGenerator numberGenerator;
-    private final Result result;
     private long lottoCount;
 
     public LottoSystem() {
         this.numberGenerator = new RandomLottoGenerator();
-        this.result = new Result();
         this.lottoCount = 0;
     }
 
@@ -50,15 +48,11 @@ public class LottoSystem {
         return numberGenerator.generateAutoLottos(count);
     }
 
-    public void scoreLottos(Lottos lottos, WinningNumber winningNumber) {
-        lottos.scoreLottos(winningNumber, result);
+    public Result scoreLottos(Lottos lottos, WinningNumber winningNumber) {
+        return lottos.scoreLottos(winningNumber);
     }
 
-    public Result getResult() {
-        return result;
-    }
-
-    public Profit calculateProfit() {
+    public Profit calculateProfit(Result result) {
         long reward = result.calculateReward();
         long seed = lottoCount * LOTTO_PRICE.getValue();
 

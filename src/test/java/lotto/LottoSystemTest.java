@@ -59,9 +59,9 @@ public class LottoSystemTest {
                         new Ball(6)
                 )), new Ball(7));
 
-        lottoSystem.scoreLottos(lottos, winningNumber);
+        Result result = lottoSystem.scoreLottos(lottos, winningNumber);
 
-        Profit profit = lottoSystem.calculateProfit();
+        Profit profit = lottoSystem.calculateProfit(result);
 
         assertThat(profit.toString()).isEqualTo(String.format("%d.%d", (2000000000+30000000) / 2000, 0));
     }

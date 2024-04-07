@@ -34,12 +34,11 @@ public class LottoApplication {
 
         List<Integer> answerAndBonusNumber = lottoView.inputAnswer();
         WinningNumber winningNumber = lottoSystem.convertToAnswer(answerAndBonusNumber);
-        lottoSystem.scoreLottos(lottos, winningNumber);
+        Result result = lottoSystem.scoreLottos(lottos, winningNumber);
 
-        Result result = lottoSystem.getResult();
         lottoView.printResult(result);
 
-        Profit profit = lottoSystem.calculateProfit();
+        Profit profit = lottoSystem.calculateProfit(result);
         lottoView.printProfit(profit);
     }
 }

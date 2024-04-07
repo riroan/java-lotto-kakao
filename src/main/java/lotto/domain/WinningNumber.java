@@ -10,15 +10,19 @@ public class WinningNumber {
         this.bonusNumber = bonusNumber;
     }
 
-    private void validateBonusNumberNotInWinningNumbers(Lotto winningNumbers, Ball bonusNumber){
+    private void validateBonusNumberNotInWinningNumbers(Lotto winningNumbers, Ball bonusNumber) {
         boolean isContain = winningNumbers.contain(bonusNumber);
         if (isContain) {
             throw new IllegalStateException("중복된 숫자가 존재합니다!");
         }
     }
 
-    public Lotto getWinningNumbers() {
-        return this.winningNumbers;
+    public long countCorrectNumbers(Lotto lotto) {
+        return winningNumbers.getBalls().stream().filter(lotto::contain).count();
+    }
+
+    public boolean hasBonusNumber(Lotto lotto) {
+        return lotto.contain(bonusNumber);
     }
 
     public Ball getBonusNumber() {

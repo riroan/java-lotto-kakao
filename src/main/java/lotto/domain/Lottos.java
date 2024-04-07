@@ -19,13 +19,11 @@ public class Lottos {
         return values.get(ix);
     }
 
-    public void scoreLottos(WinningNumber winningNumber, Result result) {
-        for (Lotto lotto: values) {
-            scoreLotto(lotto, winningNumber, result);
+    public Result scoreLottos(WinningNumber winningNumber) {
+        Result result = new Result();
+        for (Lotto lotto : values) {
+            result.scoreLotto(lotto, winningNumber);
         }
-    }
-
-    private void scoreLotto(Lotto lotto, WinningNumber winningNumber, Result result) {
-        result.scoreLotto(lotto, winningNumber);
+        return result;
     }
 }

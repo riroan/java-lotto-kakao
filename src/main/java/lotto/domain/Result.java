@@ -16,8 +16,8 @@ public class Result {
     }
 
     public void scoreLotto(Lotto lotto, WinningNumber winningNumber) {
-        long answerCount = winningNumber.getWinningNumbers().getBalls().stream().filter(lotto::contain).count();
-        boolean isCorrectBonusBall = lotto.contain(winningNumber.getBonusNumber());
+        long answerCount = winningNumber.countCorrectNumbers(lotto);
+        boolean isCorrectBonusBall = winningNumber.hasBonusNumber(lotto);
 
         Ranking rank = getRank(answerCount, isCorrectBonusBall);
         addScore(rank);
@@ -60,7 +60,7 @@ public class Result {
     public long calculateReward() {
         reward = 0L;
 
-        for (Entry<Ranking, Integer> entry: score.entrySet()) {
+        for (Entry<Ranking, Integer> entry : score.entrySet()) {
             Ranking rank = entry.getKey();
             int count = entry.getValue();
             reward += rank.getReward() * count;
