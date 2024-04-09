@@ -18,14 +18,10 @@ public class WinningNumber {
     }
 
     public long countCorrectNumbers(Lotto lotto) {
-        return winningNumbers.getBalls().stream().filter(lotto::contain).count();
+        return winningNumbers.countCorrectNumbers(lotto);
     }
 
     public boolean hasBonusNumber(Lotto lotto) {
         return lotto.contain(bonusNumber);
-    }
-
-    public Ball getBonusNumber() {
-        return this.bonusNumber;
     }
 }

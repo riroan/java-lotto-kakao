@@ -49,6 +49,10 @@ public class Lotto {
         return this.balls;
     }
 
+    public long countCorrectNumbers(Lotto other) {
+        return balls.stream().filter(other::contain).count();
+    }
+
     @Override
     public String toString() {
         List<String> numbers = balls.stream()
