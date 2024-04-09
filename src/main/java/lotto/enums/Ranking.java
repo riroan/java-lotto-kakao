@@ -9,6 +9,30 @@ public enum Ranking {
         this.value = value;
     }
 
+    public static Ranking getRank(long answerCount, boolean isCorrectBonusBall) {
+        if (answerCount == 6) {
+            return Ranking.FIRST;
+        }
+
+        if (answerCount == 5 && isCorrectBonusBall) {
+            return Ranking.SECOND;
+        }
+
+        if (answerCount == 5) {
+            return Ranking.THIRD;
+        }
+
+        if (answerCount == 4) {
+            return Ranking.FOURTH;
+        }
+
+        if (answerCount == 3) {
+            return Ranking.FIFTH;
+        }
+
+        return Ranking.FAIL;
+    }
+
     public long getReward() {
         if (value == Ranking.FIRST.value) {
             return 2000000000;

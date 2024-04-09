@@ -16,10 +16,7 @@ public class Result {
     }
 
     public void scoreLotto(Lotto lotto, WinningNumber winningNumber) {
-        long answerCount = winningNumber.countCorrectNumbers(lotto);
-        boolean isCorrectBonusBall = winningNumber.hasBonusNumber(lotto);
-
-        Ranking rank = getRank(answerCount, isCorrectBonusBall);
+        Ranking rank = winningNumber.match(lotto);
         addScore(rank);
     }
 
@@ -33,29 +30,7 @@ public class Result {
     }
 
 
-    private Ranking getRank(long answerCount, boolean isCorrectBonusBall) {
-        if (answerCount == 6) {
-            return Ranking.FIRST;
-        }
 
-        if (answerCount == 5 && isCorrectBonusBall) {
-            return Ranking.SECOND;
-        }
-
-        if (answerCount == 5) {
-            return Ranking.THIRD;
-        }
-
-        if (answerCount == 4) {
-            return Ranking.FOURTH;
-        }
-
-        if (answerCount == 3) {
-            return Ranking.FIFTH;
-        }
-
-        return Ranking.FAIL;
-    }
 
     public long calculateReward() {
         reward = 0L;

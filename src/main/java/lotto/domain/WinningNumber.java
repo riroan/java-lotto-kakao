@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.enums.Ranking;
+
 public class WinningNumber {
     private final Lotto winningNumbers;
     private final Ball bonusNumber;
@@ -19,6 +21,13 @@ public class WinningNumber {
 
     public long countCorrectNumbers(Lotto lotto) {
         return winningNumbers.countCorrectNumbers(lotto);
+    }
+
+    public Ranking match(Lotto lotto) {
+        long answerCount = countCorrectNumbers(lotto);
+        boolean isCorrectBonusBall = hasBonusNumber(lotto);
+
+        return Ranking.getRank(answerCount, isCorrectBonusBall);
     }
 
     public boolean hasBonusNumber(Lotto lotto) {
