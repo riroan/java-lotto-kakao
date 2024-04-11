@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.*;
+import lotto.generator.ManualLottoGenerator;
 import lotto.generator.RandomLottoGenerator;
 
 import java.util.List;
@@ -8,11 +9,9 @@ import java.util.stream.Collectors;
 
 public class LottoSystem {
     private static final Money LOTTO_PRICE = new Money(1000);
-    private final RandomLottoGenerator numberGenerator;
     private long lottoCount;
 
     public LottoSystem() {
-        this.numberGenerator = new RandomLottoGenerator();
         this.lottoCount = 0;
     }
 
@@ -38,14 +37,13 @@ public class LottoSystem {
     }
 
     public Lotto convertNumbersToLotto(List<Integer> numbers) {
-        List<Ball> balls = numbers.stream()
-                .map(Ball::new)
-                .collect(Collectors.toList());
-        return new Lotto(balls);
+        ManualLottoGenerator generator = new ManualLottoGenerator(numbers);
+        return generator.generateLotto();
     }
 
     private List<Lotto> generateAutoLottos(long count) {
-        return numberGenerator.generateAutoLottos(count);
+        RandomLottoGenerator generator = RandomLottoGenerator.getInstance();
+        return generator.generateAutoLottos(count);
     }
 
     public Result scoreLottos(Lottos lottos, WinningNumber winningNumber) {

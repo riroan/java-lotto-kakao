@@ -29,9 +29,6 @@ public class Result {
         score.put(rank, rankScore + 1);
     }
 
-
-
-
     public long calculateReward() {
         reward = 0L;
 

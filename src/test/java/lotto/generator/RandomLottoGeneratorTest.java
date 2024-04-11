@@ -2,7 +2,6 @@ package lotto.generator;
 
 import lotto.domain.Ball;
 import lotto.domain.Lotto;
-import lotto.domain.WinningNumber;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -16,13 +15,13 @@ public class RandomLottoGeneratorTest {
 
     @Test
     void 랜덤_숫자_생성_생성자_테스트() {
-        RandomLottoGenerator RandomLottoGenerator = new RandomLottoGenerator();
+        RandomLottoGenerator RandomLottoGenerator = lotto.generator.RandomLottoGenerator.getInstance();
         assertThat(RandomLottoGenerator).isNotNull();
     }
 
     @Test
     void 랜덤_로또_생성_테스트() {
-        RandomLottoGenerator RandomLottoGenerator = new RandomLottoGenerator();
+        RandomLottoGenerator RandomLottoGenerator = lotto.generator.RandomLottoGenerator.getInstance();
         Lotto lotto = RandomLottoGenerator.generateLotto();
 
         List<Ball> balls = lotto.getBalls();
