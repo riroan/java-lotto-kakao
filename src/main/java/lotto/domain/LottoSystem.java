@@ -1,11 +1,9 @@
-package lotto;
+package lotto.domain;
 
-import lotto.domain.*;
 import lotto.generator.ManualLottoGenerator;
 import lotto.generator.RandomLottoGenerator;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LottoSystem {
     private static final Money LOTTO_PRICE = new Money(1000);
