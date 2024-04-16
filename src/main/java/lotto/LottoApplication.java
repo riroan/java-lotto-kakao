@@ -12,10 +12,10 @@ public class LottoApplication {
         LottoView lottoView = new LottoView();
 
         Money money = new Money(lottoView.inputMoney());
-        lottoSystem.setLottoCount(money);
 
         int numberOfManualLotto = lottoView.inputNumberOfManualLotto();
         lottoSystem.validateNumberOfManualLotto(numberOfManualLotto);
+        money.buyLotto(numberOfManualLotto);
 
         List<Lotto> allLottos = new ArrayList<>();
 
@@ -26,7 +26,7 @@ public class LottoApplication {
             allLottos.add(lotto);
         }
 
-        List<Lotto> autoLottos = lottoSystem.buyAutoLotto(numberOfManualLotto);
+        List<Lotto> autoLottos = lottoSystem.buyAutoLotto(money);
         allLottos.addAll(autoLottos);
 
         Lottos lottos = new Lottos(allLottos);
@@ -38,7 +38,7 @@ public class LottoApplication {
 
         lottoView.printResult(result);
 
-        Profit profit = lottoSystem.calculateProfit(result);
+        Profit profit = lottoSystem.calculateProfit(result, lottos);
         lottoView.printProfit(profit);
     }
 }

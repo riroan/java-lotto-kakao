@@ -19,9 +19,8 @@ public class LottoSystemTest {
     void 돈_2500원으로_로또_구매_테스트() {
         LottoSystem lottoSystem = new LottoSystem();
         Money money = new Money(2500);
-        lottoSystem.setLottoCount(money);
 
-        Lottos lottos = new Lottos(lottoSystem.buyAutoLotto(0));
+        Lottos lottos = new Lottos(lottoSystem.buyAutoLotto(money));
 
         assertThat(lottos.getSize()).isEqualTo(2);
     }
@@ -29,7 +28,6 @@ public class LottoSystemTest {
     @Test
     void 수익률_계산_테스트() {
         LottoSystem lottoSystem = new LottoSystem();
-        lottoSystem.setLottoCount(new Money(2000));
 
         Lotto lotto1 = new Lotto(Arrays.asList(
                 new Ball(1),
@@ -61,7 +59,7 @@ public class LottoSystemTest {
 
         Result result = lottoSystem.scoreLottos(lottos, winningNumber);
 
-        Profit profit = lottoSystem.calculateProfit(result);
+        Profit profit = lottoSystem.calculateProfit(result, lottos);
 
         assertThat(profit.toString()).isEqualTo(String.format("%d.%d", (2000000000+30000000) / 2000, 0));
     }
