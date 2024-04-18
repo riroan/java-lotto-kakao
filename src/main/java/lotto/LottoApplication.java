@@ -32,8 +32,7 @@ public class LottoApplication {
         Lottos lottos = new Lottos(allLottos);
         lottoView.printLottos(lottos);
 
-        List<Integer> answerAndBonusNumber = lottoView.inputAnswer();
-        WinningNumber winningNumber = lottoSystem.convertToAnswer(answerAndBonusNumber);
+        WinningNumber winningNumber = lottoView.inputAnswer();
         Result result = lottoSystem.scoreLottos(lottos, winningNumber);
 
         lottoView.printResult(result);

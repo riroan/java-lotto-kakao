@@ -1,10 +1,9 @@
 package lotto.domain;
 
-import lotto.domain.Lotto;
-
 import java.util.List;
 
 public class Lottos {
+    private static final Money LOTTO_PRICE = new Money(1000);
     private final List<Lotto> values;
 
     public Lottos(List<Lotto> values) {
@@ -25,5 +24,9 @@ public class Lottos {
             result.scoreLotto(lotto, winningNumber);
         }
         return result;
+    }
+
+    public long getSeed() {
+        return values.size() * LOTTO_PRICE.getValue();
     }
 }

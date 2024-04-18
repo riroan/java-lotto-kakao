@@ -41,7 +41,7 @@ public class LottoSystem {
 
     public Profit calculateProfit(Result result, Lottos lottos) {
         long reward = result.calculateReward();
-        long seed = lottos.getSize() * LOTTO_PRICE.getValue();
+        long seed = lottos.getSeed();
 
         return new Profit(reward, seed);
     }

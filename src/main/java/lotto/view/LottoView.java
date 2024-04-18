@@ -1,12 +1,8 @@
 package lotto.view;
 
-import lotto.domain.Lotto;
-import lotto.domain.Lottos;
-import lotto.domain.Profit;
-import lotto.domain.Result;
+import lotto.domain.*;
 import lotto.enums.Ranking;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -44,17 +40,27 @@ public class LottoView {
                 .collect(Collectors.toList());
     }
 
-    public List<Integer> inputAnswer() {
+    public WinningNumber inputAnswer() {
         System.out.println("지난 주 당첨 번호를 입력해 주세요.");
         String answerLotto = scan.nextLine();
-        List<Integer> answerAndBonusBall = stringToNumbers(answerLotto);
+        List<Integer> answerNumbers = stringToNumbers(answerLotto);
 
         System.out.println("보너스 볼을 입력해 주세요.");
-        String bonusBallNumber = scan.nextLine();
-        answerAndBonusBall.add(Integer.parseInt(bonusBallNumber));
+        String bonusBallNumberInput = scan.nextLine();
+        int bonusBallNumber = Integer.parseInt(bonusBallNumberInput);
 
         System.out.println();
-        return answerAndBonusBall;
+
+        return createLotto(answerNumbers, bonusBallNumber);
+    }
+
+    private WinningNumber createLotto(List<Integer> answerNumbers, int bonusBallNumber) {
+        List<Ball> answerBalls = answerNumbers.stream()
+                .map(Ball::new)
+                .collect(Collectors.toList());
+        Ball bonusBall = new Ball(bonusBallNumber);
+        Lotto answer = new Lotto(answerBalls);
+        return new WinningNumber(answer, bonusBall);
     }
 
     public void printResult(Result result) {
