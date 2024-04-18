@@ -35,7 +35,7 @@ public class Result {
         for (Entry<Ranking, Integer> entry : score.entrySet()) {
             Ranking rank = entry.getKey();
             int count = entry.getValue();
-            reward += rank.getReward() * count;
+            reward += rank.getValue() * count;
         }
 
         return reward;

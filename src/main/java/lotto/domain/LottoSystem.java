@@ -8,10 +8,6 @@ import java.util.List;
 public class LottoSystem {
     private static final Money LOTTO_PRICE = new Money(1000);
 
-    private long calculateLottoCount(Money money) {
-        return money.divide(LOTTO_PRICE);
-    }
-
     public List<Lotto> buyAutoLotto(Money money) {
         return generateAutoLottos(money.canBuyCount());
     }
